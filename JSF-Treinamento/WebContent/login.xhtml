@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional. dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Login</title>
+</h:head>
+
+<h:body>
+	<h1>Autenticação de Usuários</h1>
+	<h:form>
+		<p:panel id="pnlLogin" header="Login" toggleable="true"
+			closable="false" toggleSpeed="500" onCloseUpdate="growl"
+			closeSpeed="2000" onToggleUpdate="growl" widgetVar="panel">
+			<h:panelGrid columns="2" cellpadding="10">
+				<h:outputLabel value="Usuário : " for="campo-usuario" />
+				<h:inputText value="#{autenticadorBean.usuario}" id="campo-usuario" />
+				<h:outputLabel value="Senha : " for="campo-senha" />
+				<h:inputSecret value="#{autenticadorBean.senha}" id="campo-senha" />
+				<h:commandButton value="Efetuar Login"
+					action="#{autenticadorBean.autentica}" />
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+	<h:messages />
+</h:body>
+</html>

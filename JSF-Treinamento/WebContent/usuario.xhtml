@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional. dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cadastro de Usuário</title>
+</h:head>
+
+<h:body>
+	<h1>Dados do usuário</h1>
+	<h:form>
+		<p:panel id="pnlUsuario" header="Usuário" toggleable="true"
+			closable="false" toggleSpeed="500" onCloseUpdate="growl"
+			closeSpeed="2000" onToggleUpdate="growl" widgetVar="panel">
+			<h:panelGrid columns="2" cellpadding="10">
+				<h:outputLabel value="Nome : " for="campo-nome" />
+				<h:inputText value="#{usuarioBean.nome}" id="campo-nome" />
+				<h:outputLabel value="Idade : " for="campo-idade" />
+				<h:inputSecret value="#{usuarioBean.idade}" id="campo-idade" />
+				<h:commandButton value="Enviar"/>
+			</h:panelGrid>
+			<h:panelGrid rendered="#{not empty usuarioBean.nome}">
+			Usuário: <b>#{usuarioBean.nome}</b>
+			Idade: <b>#{usuarioBean.idade}</b>
+			</h:panelGrid>
+		</p:panel>
+		
+	</h:form>
+	<h:messages />
+</h:body>
+</html>

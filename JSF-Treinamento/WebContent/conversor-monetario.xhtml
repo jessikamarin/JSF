@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional. dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Conversor Monetário</title>
+</h:head>
+
+<h:body>
+	<h1>Conversor Monetário</h1>
+	<h:form>
+		<p:panel id="pnlconversor" header="Conversor">
+			<h:panelGrid columns="2" cellpadding="10">
+
+				<h:outputLabel value="Valor: " for="campo-valor" />
+				<h:inputText value="#{conversorMonetarioBean.valor}" id="campo-valor" />
+				
+				<h:outputLabel value="De: " for="campo-de" />
+				<h:selectOneMenu value="#{conversorMonetarioBean.de}" id="campo-de">
+				<f:selectItems 
+					value="#{conversorMonetarioBean.moedas.keySet()}"
+					var="moeda"
+					itemValue="#{moeda}"
+					itemLabel="#{moeda}"				
+				/>					
+				</h:selectOneMenu>	
+			    
+				<h:outputLabel value="Para: " for="campo-para" />
+				<h:selectOneMenu value="#{conversorMonetarioBean.para}" id="campo-para">
+				<f:selectItems 
+					value="#{conversorMonetarioBean.moedas.keySet()}"
+					var="moeda1"
+					itemValue="#{moeda1}"
+					itemLabel="#{moeda1}"				
+				/>					
+				</h:selectOneMenu>
+				<h:commandButton value="Enviar" action="#{conversorMonetarioBean.converte}"/>
+			</h:panelGrid>
+			<h:panelGrid rendered="#{conversorMonetarioBean.resultado != 0.0}">
+			Conversão: <b>#{conversorMonetarioBean.resultado}</b>
+			</h:panelGrid>
+		</p:panel>
+		
+	</h:form>
+	<h:messages />
+</h:body>
+</html>
