@@ -5,5 +5,58 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
     version="2.0">
-
+    <validator>
+    	<validator-id>
+    		NumeroPrimoValidator
+    	</validator-id>
+    	<validator-class>
+    		br.dextra.validador.NumeroPrimoValidator
+    	</validator-class>
+    </validator>
+    
+    <navigation-rule>
+    	<from-view-id>navegacao1-componentes-visuais.xhtml</from-view-id>
+    	<navigation-case>
+    		<from-outcome>proximo</from-outcome>
+    		<to-view-id>navegacao2-templates-e-modularizacao.xhtml</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+    	<from-view-id>navegacao2-templates-e-modularizacao.xhtml</from-view-id>
+    	<navigation-case>
+    		<from-outcome>proximo</from-outcome>
+    		<to-view-id>navegacao3-navegacao.xhtml</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>anterior</from-outcome>
+    		<to-view-id>navegacao1-componentes-visuais.xhtml</to-view-id>
+    	</navigation-case>
+    </navigation-rule> 
+    
+    <navigation-rule>
+    	<from-view-id>navegacao3-navegacao.xhtml</from-view-id>
+    	<navigation-case>
+    		<from-outcome>anterior</from-outcome>
+    		<to-view-id>navegacao2-templates-e-modularizacao.xhtml</to-view-id>
+    	</navigation-case>
+    </navigation-rule> 
+    
+    <navigation-rule>
+    	<from-view-id>cara-coroa.xhtml</from-view-id>
+    	<navigation-case>
+    		<from-outcome>#{caraCoroaBean.lancar}</from-outcome>
+    		<to-view-id>cara.xhtml</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-outcome>#{caraCoroaBean.lancar}</from-outcome>
+    		<to-view-id>coroa.xhtml</to-view-id>
+    	</navigation-case>
+    </navigation-rule> 
+    
+    <lifecycle>
+    	<phase-listener>br.dextra.phaselistener.MonitorPhaseListener
+    	</phase-listener>
+    </lifecycle>
+ 
 </faces-config>

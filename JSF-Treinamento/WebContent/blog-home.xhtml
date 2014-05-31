@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional. dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Blog Simples</title>
+</h:head>
+
+<h:body>
+	<h1>Blog simples!</h1>
+	<br />
+	<h:form>
+		<h:commandLink value="Criar novo Post" action="novo-post" />
+		<hr />
+	</h:form>
+	<br/>
+	<p:panel
+				header="#{postBean.getPosts().size()} #{i18n.amountEntries}" 
+				toggleable="true" closable="true" toggleSpeed="500">
+		<ui:repeat value="#{postBean.posts}" var="entry">
+			<h:panelGrid columns="2" cellpadding="10">
+				<f:facet name="header">
+					<h:outputText value="#{entry.titulo}" />
+				</f:facet>
+				<h:outputText value="Autor : #{entry.autor}" />
+				<h:outputText value="URL : #{entry.bookmarkURL}" />
+				
+				<h:panelGroup id="pGroup">
+					<h:outputText value="#{entry.conteudo}" />
+					<p:contextMenu  for="pGroup">
+						<p:menuitem value="Deletar"
+							actionListener="#{blogEntryBean.delete(entry)}" update="@form" />
+					</p:contextMenu>
+				</h:panelGroup>
+				<f:facet name="footer">
+					<h:outputText value="Data de Criação : #{entry.dataCriacao}" />
+				</f:facet>		
+				<!--  <h:dataTable value ="#{postBean.posts}" var ="post"
+				rendered ="#{not empty postBean.posts}">
+				
+				<f:facet name ="header">Posts</f:facet >
+				
+				<h:column >
+				<f:facet name ="header">Título </f:facet >
+				#{post.titulo}
+				</h:column >
+				
+				<h:column >
+				<f:facet name ="header">Autor </f:facet >
+				 #{post.autor}
+				</h:column >
+				
+				<h:column >
+				<f:facet name ="header">Conteúdo </f:facet >
+				 #{post.conteudo}
+				</h:column >
+			</h:dataTable > -->
+			</h:panelGrid>
+	<hr/>
+	</ui:repeat>
+</p:panel>
+</h:body>
+</html>

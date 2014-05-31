@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional. dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cadastro de Funcionário</title>
+</h:head>
+
+<h:body>
+	<h1>Dados do Funcionário</h1>
+	<h:form>
+		<p:panel id="pnlFuncionario" header="Funcionário" toggleable="true"
+			closable="false" toggleSpeed="500" onCloseUpdate="growl"
+			closeSpeed="2000" onToggleUpdate="growl" widgetVar="panel">
+			<h:panelGrid columns="2" cellpadding="10">
+
+				<h:outputLabel value="Nome: " for="campo-nome" />
+				<h:inputText value="#{funcionarioBean.nome}" id="campo-nome"
+					 label="Nome">
+				</h:inputText>
+				
+				
+				
+				<h:outputLabel value="Salário: " for="campo-salario" />
+				<h:inputText value="#{funcionarioBean.salario}" id="campo-salario"
+					converterMessage="Salário: Não é um número válido!" label="Salário">
+					<f:convertNumber locale="pt_BR" />
+				</h:inputText>
+
+				<h:outputLabel value="Código: " for="campo-codigo" />
+				<h:inputText value="#{funcionarioBean.codigo}" id="campo-codigo"
+					converterMessage="Código: Não é um número válido!" label="Código">
+					<f:convertNumber />
+				</h:inputText>
+
+				<h:outputLabel value="Data (dd/MM/yyyy): " for="campo-data" />
+				<h:inputText value="#{funcionarioBean.data}" id="campo-data"
+					label="Data" converterMessage="Data: Não é uma data válida!">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:inputText>
+				
+				<h:outputLabel value="Estado: " for="estado" />
+				<h:selectOneMenu id="estado"
+					value="#{funcionarioBean.siglaDoEstadoEscolhido}"
+					valueChangeListener="#{funcionarioBean.mudaEstado}"
+					onchange="this.form.submit();"
+					required="true"
+					immediate="true"
+					>
+				
+				<f:selectItem itemLabel="Escolha um estado" noSelectionOption="true"/>
+				<f:selectItems 
+					value="#{funcionarioBean.estados}"
+					var="estado"
+					itemLabel="#{estado.nome}"
+					itemLabel="#{estado.sigla}"
+				 />
+				 </h:selectOneMenu>
+				 
+				 <h:outputLabel value="Cidade:" for="cidade"/>
+				 <h:selectOneMenu id="cidade" value="#{funcionarioBean.cidade}" required="true">
+				 	<f:selectItem itemLabel="Escolha uma cidade" noSelectionOption="true"/>
+				 	<f:selectItems value="#{funcionarioBean.estadoSelecionado.cidades"/>
+				 </h:selectOneMenu>
+
+				<h:commandButton value="Cadastrar" />
+			</h:panelGrid>
+		</p:panel>
+
+	</h:form>
+	<hr />
+	<h:messages />
+</h:body>
+</html>

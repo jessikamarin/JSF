@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional. dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Números Primos</title>
+</h:head>
+
+<h:body>
+	<h1>Valida Números Primos</h1>
+	<h:form>
+		<p:panel id="pnlconversor" header="Conversor">
+			<h:panelGrid columns="2" cellpadding="10">
+
+				<h:outputLabel value="Número: " for="campo-numero" />
+				<h:inputText value="#{numeroPrimoBean.numero}" id="campo-numero" validator="#{numeroPrimoBean.validate}"  >
+				<!--  <f:validator validatorId="NumeroPrimoValidator" />-->
+				</h:inputText>
+				
+				<h:commandButton value="Enviar" />
+			</h:panelGrid>
+			
+		</p:panel>
+		
+	</h:form>
+	<hr/>
+	<h:messages />
+</h:body>
+</html>

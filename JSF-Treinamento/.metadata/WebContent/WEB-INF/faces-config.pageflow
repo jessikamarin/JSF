@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14008934295370" configfile="/JSF-Treinamento/WebContent/WEB-INF/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14008934295370" configfile="/JSF-Treinamento/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="navegacao1-componentes-visuais.xhtml" x="554" y="178" id="pf14013143393680" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf14013143393691" inlinks="pf14013143393692" path="navegacao1-componentes-visuais.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="navegacao2-templates-e-modularizacao.xhtml" x="338" y="178" id="pf14013143393693" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" outlinks="pf14013143393694 pf14013143393692" inlinks="pf14013143393691 pf14013143393695" path="navegacao2-templates-e-modularizacao.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="navegacao3-navegacao.xhtml" x="122" y="178" id="pf14013143393696" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf14013143393695" inlinks="pf14013143393694" path="navegacao3-navegacao.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cara-coroa.xhtml" x="122" y="754" id="pf14013143393707" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf14013143393708 pf14013143393709" path="cara-coroa.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cara.xhtml" x="338" y="562" id="pf140131433937010" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf14013143393708" path="cara.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="coroa.xhtml" x="338" y="946" id="pf140131433937011" referenceLink="//@navigationRule.3/@navigationCase.1/@toViewId|" inlinks="pf14013143393709" path="coroa.xhtml"/>
+  <links id="pf14013143393691" target="pf14013143393693" source="pf14013143393680" outcome="proximo"/>
+  <links id="pf14013143393694" target="pf14013143393696" source="pf14013143393693" outcome="proximo"/>
+  <links id="pf14013143393692" target="pf14013143393680" source="pf14013143393693" outcome="anterior"/>
+  <links id="pf14013143393695" target="pf14013143393693" source="pf14013143393696" outcome="anterior"/>
+  <links id="pf14013143393708" target="pf140131433937010" source="pf14013143393707" outcome="#{caraCoroaBean.lancar}"/>
+  <links id="pf14013143393709" target="pf140131433937011" source="pf14013143393707" outcome="#{caraCoroaBean.lancar}"/>
+</pageflow:Pageflow>

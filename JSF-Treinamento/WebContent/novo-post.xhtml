@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head >
+ <title>Novo Post</title>
+</h:head >
+
+<h:body>
+	<h1>Novo Post</h1>
+	<br/>
+	<hr/>
+	<h:form>
+			<p:panel id="pnlCriaPost" header="Cria novo Post"
+				toggleable="true" closable="false" toggleSpeed="500"
+				onCloseUpdate="growl" closeSpeed="2000" onToggleUpdate="growl"
+				widgetVar="panel">
+				<h:panelGrid columns="2" cellpadding="10">
+					<label>Titulo</label>
+					<h:inputText label="Titulo" id="lblTitulo"
+						value="#{postBean.post.titulo}" required="true" >
+						<f:validateLength minimum="10" maximum="50" />	
+					</h:inputText>
+					<!--<h:message for="lblTitulo" class="errorMsg"/>-->
+					<label>Autor</label>
+					<h:inputText label="Autor" id="lblAutor"
+						value="#{postBean.post.autor}" required="true" >
+						<f:validateRegex pattern="(([a-zA-Z]).{6,30})"/>
+					</h:inputText>
+					<!--<h:message for="lblAutor" class="errorMsg"/>-->
+					<label>Conteúdo</label>
+					<h:inputTextarea label="Conteúdo" id="lblConteudo"
+						value="#{postBean.post.conteudo}" required="true" >
+						<f:validateLength minimum="25" />
+					</h:inputTextarea>	
+					<!--<h:message for="lblConteudo" class="errorMsg"/>-->
+					<label>URL</label>
+					<h:inputTextarea label="URL" id="lblURL"
+						value="#{postBean.post.bookmarkURL}" required="true" >
+						<f:converter converterId="br.dextra.URLConverter" />
+					</h:inputTextarea>	
+					
+					<h:commandButton title="Salvar" value="Salvar"
+						action="#{postBean.adicionaPost}" />
+				</h:panelGrid>
+				
+			</p:panel>
+
+		</h:form>
+		<hr/>
+		<h:messages style="color:red;margin:8px;"/>
+		<br/>
+		<hr/>
+		<h:form>
+			<h:commandLink value="Voltar" action="blog-home" />
+		</h:form>
+</h:body>
+</html>
