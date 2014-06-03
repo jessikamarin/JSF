@@ -36,8 +36,9 @@ public class PostBean {
 	}
 
 	
-	public void removePost(List post){
-		
+	public String removePost(Post post){
+		this.posts.remove(post);
+		return "blog-home";
 	}
 	
 	public List<Post> getPosts() {

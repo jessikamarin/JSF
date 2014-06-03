@@ -17,8 +17,9 @@
 	<h:form>
 		<h:commandLink value="Criar novo Post" action="novo-post" />
 		<hr />
-	</h:form>
+	
 	<br/>
+	
 	<p:panel
 				header="#{postBean.getPosts().size()} #{i18n.amountEntries}" 
 				toggleable="true" closable="true" toggleSpeed="500">
@@ -33,13 +34,16 @@
 				<h:panelGroup id="pGroup">
 					<h:outputText value="#{entry.conteudo}" />
 					<p:contextMenu  for="pGroup">
-						<p:menuitem value="Deletar"
-							actionListener="#{blogEntryBean.delete(entry)}" update="@form" />
+						
 					</p:contextMenu>
 				</h:panelGroup>
+				
 				<f:facet name="footer">
 					<h:outputText value="Data de Criação : #{entry.dataCriacao}" />
-				</f:facet>		
+				</f:facet>	
+				
+				<h:commandButton value="Deletar" actionListener="#{postBean.removePost(entry)}" update="@form" >
+				</h:commandButton>
 				<!--  <h:dataTable value ="#{postBean.posts}" var ="post"
 				rendered ="#{not empty postBean.posts}">
 				
@@ -64,5 +68,6 @@
 	<hr/>
 	</ui:repeat>
 </p:panel>
+</h:form>
 </h:body>
 </html>
